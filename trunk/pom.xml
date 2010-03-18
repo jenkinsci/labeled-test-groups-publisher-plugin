@@ -36,7 +36,7 @@ THE SOFTWARE.
     </parent>
 
     <artifactId>labeled-test-groups-publisher</artifactId>
-    <version>1.2.4</version>
+    <version>1.2.4-SNAPSHOT</version>
     <packaging>hpi</packaging>
     <name>Labeled Test Groups Publisher</name>
     <description>Hudson plugin that allows arbitrary test formats grouped by type</description>
