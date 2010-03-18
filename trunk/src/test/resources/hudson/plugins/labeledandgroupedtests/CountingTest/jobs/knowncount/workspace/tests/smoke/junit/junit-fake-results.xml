@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="38.1" errors="0" skipped="0" tests="4" name="hudson.model.FreeStyleProjectTest">
+  <testcase time="6.114" classname="hudson.model.FreeStyleProjectTest" name="testConfigSubmission"/>
+  <testcase time="10.805" classname="hudson.model.FreeStyleProjectTest" name="testUpstreamPseudoTrigger"/>
+  <testcase time="10.952" classname="hudson.model.FreeStyleProjectTest" name="testUpstreamPseudoTrigger2"/>
+  <testcase time="10.225" classname="hudson.model.FreeStyleProjectTest" name="testUpstreamPseudoTrigger3"/>
+</testsuite>

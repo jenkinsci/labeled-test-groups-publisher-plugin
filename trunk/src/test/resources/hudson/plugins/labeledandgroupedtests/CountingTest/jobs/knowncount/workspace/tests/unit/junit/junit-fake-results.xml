@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="5.654" errors="0" skipped="0" tests="2" name="hudson.tasks.MailerTest">
+  <testcase time="1.301" classname="hudson.tasks.MailerTest" name="testSenderAddress"/>
+  <testcase time="4.352" classname="hudson.tasks.MailerTest" name="testLocalHostWarning"/>
+</testsuite>
