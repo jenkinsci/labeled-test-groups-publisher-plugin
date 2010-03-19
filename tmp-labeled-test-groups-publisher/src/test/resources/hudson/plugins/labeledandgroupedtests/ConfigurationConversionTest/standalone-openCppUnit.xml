@@ -1,0 +1,5 @@
+<hudson.plugins.cppunit.CppUnitPublisher>
+    <testResultsPattern>**/cppunit/cpp*.xml</testResultsPattern>
+    <useCustomStylesheet>false</useCustomStylesheet>
+    <customStylesheet/>
+</hudson.plugins.cppunit.CppUnitPublisher>

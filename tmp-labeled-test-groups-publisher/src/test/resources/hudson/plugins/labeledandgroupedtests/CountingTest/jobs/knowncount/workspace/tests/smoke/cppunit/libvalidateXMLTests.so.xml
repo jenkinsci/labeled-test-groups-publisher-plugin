@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding='ISO-8859-1' standalone='yes' ?>
+<TestRun>
+  <FailedTests></FailedTests>
+  <SuccessfulTests>
+    <Test id="1">
+      <Name>fruitaboo::sbs::xmlt::tests::validateXMLTests::testScalarOptional</Name>
+    </Test>
+    <Test id="2">
+      <Name>fruitaboo::sbs::xmlt::tests::validateXMLTests::testScalarWithConstraint</Name>
+    </Test>
+    <Test id="3">
+      <Name>fruitaboo::sbs::xmlt::tests::validateXMLTests::testScalarTagMissing</Name>
+    </Test>
+    <Test id="4">
+      <Name>fruitaboo::sbs::xmlt::tests::validateXMLTests::testScalarTagOptional</Name>
+    </Test>
+    <Test id="5">
+      <Name>fruitaboo::sbs::xmlt::tests::validateXMLTests::testArrayWithMinOccurs</Name>
+    </Test>
+    <Test id="6">
+      <Name>fruitaboo::sbs::xmlt::tests::validateXMLTests::testArrayWithMaxAllowed</Name>
+    </Test>
+    <Test id="7">
+      <Name>fruitaboo::sbs::xmlt::tests::validateXMLTests::testArrayLessThanMinOccurs</Name>
+    </Test>
+    <Test id="8">
+      <Name>fruitaboo::sbs::xmlt::tests::validateXMLTests::testArrayWithBadConstraint</Name>
+    </Test>
+    <Test id="9">
+      <Name>fruitaboo::sbs::xmlt::tests::validateXMLTests::testChoice</Name>
+    </Test>
+    <Test id="10">
+      <Name>fruitaboo::sbs::xmlt::tests::validateXMLTests::testChoiceBadChoice</Name>
+    </Test>
+    <Test id="11">
+      <Name>fruitaboo::sbs::xmlt::tests::validateXMLTests::testSequence</Name>
+    </Test>
+  </SuccessfulTests>
+  <Statistics>
+    <Tests>11</Tests>
+    <FailuresTotal>0</FailuresTotal>
+    <Errors>0</Errors>
+    <Failures>0</Failures>
+  </Statistics>
+</TestRun>

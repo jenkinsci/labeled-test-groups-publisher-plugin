@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+    <actions/>
+    <description>known counts hardcoded test results</description>
+    <keepDependencies>false</keepDependencies>
+    <properties/>
+    <scm class="hudson.scm.NullSCM"/>
+    <canRoam>true</canRoam>
+    <disabled>false</disabled>
+    <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+    <triggers class="vector"/>
+    <concurrentBuild>false</concurrentBuild>
+    <builders>
+        <hudson.plugins.utilitybuilders.TouchBuilder />
+    </builders>
+    <publishers>
+        <hudson.plugins.labeledgroupedtests.LabeledGroupedTestArchiver>
+            <configs>
+                <hudson.plugins.labeledgroupedtests.LabeledTestGroupConfiguration>
+                    <parserClassName>hudson.tasks.junit.JUnitParser</parserClassName>
+                    <testResultFileMask>tests/unit/junit/*.xml,,</testResultFileMask>
+                    <label>unit</label>
+                </hudson.plugins.labeledgroupedtests.LabeledTestGroupConfiguration>
+                <hudson.plugins.labeledgroupedtests.LabeledTestGroupConfiguration>
+                    <parserClassName>hudson.plugins.cppunitparser.CPPUnitTestResultParser</parserClassName>
+                    <testResultFileMask>tests/unit/cppunit/*.xml,,</testResultFileMask>
+                    <label>unit</label>
+                </hudson.plugins.labeledgroupedtests.LabeledTestGroupConfiguration>
+                <hudson.plugins.labeledgroupedtests.LabeledTestGroupConfiguration>
+                    <parserClassName>hudson.plugins.cppunitparser.CPPUnitTestResultParser</parserClassName>
+                    <testResultFileMask>tests/regression/cppunit/*.xml,,</testResultFileMask>
+                    <label>regression</label>
+                </hudson.plugins.labeledgroupedtests.LabeledTestGroupConfiguration>
+                <hudson.plugins.labeledgroupedtests.LabeledTestGroupConfiguration>
+                    <parserClassName>hudson.tasks.junit.JUnitParser</parserClassName>
+                    <testResultFileMask>tests/regression/junit/*.xml,,</testResultFileMask>
+                    <label>regression</label>
+                </hudson.plugins.labeledgroupedtests.LabeledTestGroupConfiguration>
+                <hudson.plugins.labeledgroupedtests.LabeledTestGroupConfiguration>
+                    <parserClassName>hudson.tasks.junit.JUnitParser</parserClassName>
+                    <testResultFileMask>tests/smoke/junit/*.xml,,</testResultFileMask>
+                    <label>smoke</label>
+                </hudson.plugins.labeledgroupedtests.LabeledTestGroupConfiguration>
+                <hudson.plugins.labeledgroupedtests.LabeledTestGroupConfiguration>
+                    <parserClassName>hudson.plugins.cppunitparser.CPPUnitTestResultParser</parserClassName>
+                    <testResultFileMask>tests/smoke/cppunit/*.xml,,</testResultFileMask>
+                    <label>smoke</label>
+                </hudson.plugins.labeledgroupedtests.LabeledTestGroupConfiguration>
+            </configs>
+        </hudson.plugins.labeledgroupedtests.LabeledGroupedTestArchiver>
+    </publishers>
+    <buildWrappers/>
+</project>
+

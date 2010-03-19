@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding='ISO-8859-1' standalone='yes' ?>
+<TestRun>
+  <FailedTests></FailedTests>
+  <SuccessfulTests>
+    <Test id="1">
+      <Name>fruitaboo::sbs::xmlt::tests::toXMLTests::toXMLFromScalar</Name>
+    </Test>
+    <Test id="2">
+      <Name>fruitaboo::sbs::xmlt::tests::toXMLTests::toXMLFromArray</Name>
+    </Test>
+    <Test id="3">
+      <Name>fruitaboo::sbs::xmlt::tests::toXMLTests::toXMLFromArrayOfChoices</Name>
+    </Test>
+    <Test id="4">
+      <Name>fruitaboo::sbs::xmlt::tests::toXMLTests::toXMLForSequence</Name>
+    </Test>
+    <Test id="5">
+      <Name>fruitaboo::sbs::xmlt::tests::toXMLTests::toXMLCrypt</Name>
+    </Test>
+  </SuccessfulTests>
+  <Statistics>
+    <Tests>5</Tests>
+    <FailuresTotal>0</FailuresTotal>
+    <Errors>0</Errors>
+    <Failures>0</Failures>
+  </Statistics>
+</TestRun>

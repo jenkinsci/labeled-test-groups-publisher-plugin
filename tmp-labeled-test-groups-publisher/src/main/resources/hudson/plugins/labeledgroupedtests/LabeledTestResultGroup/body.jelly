@@ -1,0 +1,69 @@
+<!--
+The MIT License
+
+Copyright (c) 2010 Yahoo!, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+
+    <table class="pane sortable" id="testresult">
+        <tr>
+            <td class="pane-header"></td>
+            <td class="pane-header" style="width:5em">${%Duration}</td>
+            <td class="pane-header" style="width:5em">${%Pass}</td>
+            <td class="pane-header" style="width:1em; font-size:smaller; white-space:nowrap;">(${%diff})</td>
+            <td class="pane-header" style="width:5em">${%Fail}</td>
+            <td class="pane-header" style="width:1em; font-size:smaller; white-space:nowrap;">(${%diff})</td>
+            <td class="pane-header" style="width:5em">${%Skip}</td>
+            <td class="pane-header" style="width:1em; font-size:smaller; white-space:nowrap;">(${%diff})</td>
+            <td class="pane-header" style="width:5em">${%Total}</td>
+            <td class="pane-header" style="width:1em; font-size:smaller; white-space:nowrap;">(${%diff})</td>
+        </tr>
+        <tbody>
+            <j:forEach var="p" items="${it.children}">
+                <j:set var="prev" value="${p.previousResult}" />
+                <j:set var="displayName" value="${it.getDisplayNameForChild(p)}"></j:set>
+                <tr>
+                    <td class="pane" >
+                        <a href="${displayName}"><span style='${prev==null?"font-weight:bold":""}'>${displayName}</span></a>
+                    </td>
+                    <td class="pane" style="text-align:right" data="${p.duration}">${p.durationString}</td>
+                    <td class="pane" style="text-align:right">${p.passCount}</td>
+                    <td class="pane diff pass" style="text-align:right">
+                        ${h.getDiffString2(p.passCount-prev.passCount)}
+                    </td>
+                    <td class="pane result-fail" style="text-align:right">${p.failCount}</td>
+                    <td class="pane diff result-regression" style="text-align:right">
+                        ${h.getDiffString2(p.failCount-prev.failCount)}
+                    </td>
+                    <td class="pane" style="text-align:right">${p.skipCount}</td>
+                    <td class="pane diff skip" style="text-align:right">
+                        ${h.getDiffString2(p.skipCount-prev.skipCount)}
+                    </td>
+                    <td class="pane" style="text-align:right">${p.totalCount}</td>
+                    <td class="pane diff total" style="text-align:right">
+                        ${h.getDiffString2(p.totalCount-prev.totalCount)}
+                    </td>
+                </tr>
+            </j:forEach>
+        </tbody>
+    </table>
+
+</j:jelly>
