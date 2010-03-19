@@ -1,5 +1,0 @@
-<hudson.plugins.cppunit.CppUnitPublisher>
-    <testResultsPattern>foo/bar/ggg.*.xml</testResultsPattern>
-    <useCustomStylesheet>true</useCustomStylesheet>
-    <customStylesheet>zzzzzz</customStylesheet>
-</hudson.plugins.cppunit.CppUnitPublisher>
