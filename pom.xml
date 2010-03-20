@@ -34,7 +34,7 @@ THE SOFTWARE.
     </parent>
 
     <artifactId>labeled-test-groups-publisher</artifactId>
-    <version>1.2.6</version>
+    <version>1.2.7-SNAPSHOT</version>
     <packaging>hpi</packaging>
     <name>Labeled Test Groups Publisher</name>
     <description>Hudson plugin that allows arbitrary test formats grouped by type</description>
@@ -70,9 +70,9 @@ THE SOFTWARE.
     </dependencies>
 
     <scm>
-        <connection>scm:svn:https://guest@hudson.dev.java.net/svn/hudson/tags/labeled-test-groups-publisher-1.2.6</connection>
-        <developerConnection>scm:svn:https://hudson.dev.java.net/svn/hudson/tags/labeled-test-groups-publisher-1.2.6</developerConnection>
-        <url>http://fisheye4.atlassian.com/browse/hudson/tags/labeled-test-groups-publisher-1.2.6</url>
+        <connection>scm:svn:https://guest@hudson.dev.java.net/svn/hudson/trunk/hudson/plugins/labeled-test-groups-publisher/</connection>
+        <developerConnection>scm:svn:https://hudson.dev.java.net/svn/hudson/trunk/hudson/plugins/labeled-test-groups-publisher/</developerConnection>
+        <url>http://fisheye4.atlassian.com/browse/hudson/trunk/hudson/plugins/labeled-test-groups-publisher/</url>
     </scm>
 
     <mailingLists>
