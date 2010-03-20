@@ -36,7 +36,7 @@ THE SOFTWARE.
                         <f:entry title="Result Format" name="format">
                             <select name="parserClassName">
                                 <j:forEach var="parser" items="${parsers}">
-                                    <f:option value="${parser.class.name}" selected="${parser.class.name==curConfig.parserClassName}">${parser.parserName}</f:option>
+                                    <f:option value="${parser.class.name}" selected="${parser.class.name==curConfig.parserClassName}">${parser.displayName}</f:option>
                                 </j:forEach>
                             </select>
                         </f:entry>
