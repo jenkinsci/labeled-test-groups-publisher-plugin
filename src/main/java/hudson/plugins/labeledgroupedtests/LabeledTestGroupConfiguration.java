@@ -24,7 +24,6 @@
 package hudson.plugins.labeledgroupedtests;
 
 
-import hudson.Extension;
 import hudson.Util;
 import hudson.model.Descriptor;
 import hudson.model.Hudson;
@@ -100,7 +99,6 @@ public class LabeledTestGroupConfiguration implements Describable<LabeledTestGro
         return Hudson.getInstance().getDescriptorOrDie(getClass());
     }
 
-    @Extension
     public static class DescriptorImpl extends Descriptor<LabeledTestGroupConfiguration> {
 
         @Override
