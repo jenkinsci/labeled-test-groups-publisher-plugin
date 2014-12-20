@@ -37,10 +37,8 @@ import hudson.tasks.Recorder;
 import hudson.tasks.test.TestResult;
 import hudson.tasks.test.TestResultParser;
 import hudson.tasks.test.TestResultAggregator;
-import hudson.util.FormValidation;
 import net.sf.json.JSONObject;
 import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
 
 import java.io.IOException;
@@ -108,23 +106,6 @@ public class LabeledTestResultGroupPublisher extends Recorder implements Seriali
 
     public void setConfigs(List<LabeledTestGroupConfiguration> configs) {
         this.configs = configs;
-    }
-
-    public FormValidation doCheckConfigs(@QueryParameter List<LabeledTestGroupConfiguration> value){
-        int n = value.size();
-        List<LabeledTestGroupConfiguration> sortedConfigs = new ArrayList<LabeledTestGroupConfiguration>(n);
-        Collections.copy(sortedConfigs, value);
-        Collections.sort(sortedConfigs);
-        for(int i = 0; i < n-1; i++){
-            String configA = sortedConfigs.get(i).getLabel();
-            String configB = sortedConfigs.get(i+1).getLabel();
-            if(configA.equals(configB)){
-                return FormValidation.error(
-                        (new StringBuilder("Cannot have two labeled test group configurations with same name: "))
-                                .append(configA).toString());
-            }
-        }
-        return FormValidation.ok();
     }
 
     @Override

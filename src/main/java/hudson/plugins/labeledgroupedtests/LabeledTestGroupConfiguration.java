@@ -28,11 +28,9 @@ import hudson.Util;
 import hudson.model.Descriptor;
 import hudson.model.Hudson;
 import hudson.tasks.junit.JUnitParser;
-import hudson.util.FormValidation;
 import hudson.model.Describable;
 import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.QueryParameter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -104,15 +102,6 @@ public class LabeledTestGroupConfiguration implements Describable<LabeledTestGro
         @Override
         public String getDisplayName() {
             return StringUtils.EMPTY;
-        }
-
-        public FormValidation doCheckLabel(@QueryParameter String value){
-            if(VALID_LABEL.matcher(value).matches()){
-                return FormValidation.ok();
-            }
-            else{
-                return FormValidation.error("Label must be a non-empty, alphanumeric string.");
-            }
         }
 
     }
