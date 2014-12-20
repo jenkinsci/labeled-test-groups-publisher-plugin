@@ -41,12 +41,8 @@ THE SOFTWARE.
                             </select>
                         </f:entry>
 
-                        <f:entry title="Group Label">
-                            <select name="label">
-                                <j:forEach var="phase" items="${phases}">
-                                    <f:option value="${phase}"  selected="${phase==curConfig.label}">${phase}</f:option>
-                                </j:forEach>
-                            </select>
+                        <f:entry title="Group Label" field="label">
+                            <f:textbox value="${curConfig.label}"></f:textbox>
                         </f:entry>
 
                     </f:entry>
