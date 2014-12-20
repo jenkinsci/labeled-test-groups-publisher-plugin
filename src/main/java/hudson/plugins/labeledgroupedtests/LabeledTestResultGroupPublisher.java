@@ -86,10 +86,6 @@ public class LabeledTestResultGroupPublisher extends Recorder implements Seriali
         return testResultParsers;
     }
 
-    public static List<String> getPhases() {
-        return Arrays.asList("unit", "smoke", "regression", "integration", "special", "misc");
-    }
-
     public void debugPrint() {
         for (LabeledTestGroupConfiguration config: configs) {
             LOGGER.info("got config: " + config.toString());

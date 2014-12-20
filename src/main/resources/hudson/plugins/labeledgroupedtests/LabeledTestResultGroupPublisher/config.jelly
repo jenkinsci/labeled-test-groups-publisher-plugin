@@ -21,41 +21,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -->
-<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form">
 
-    <j:invokeStatic className="hudson.plugins.labeledgroupedtests.LabeledTestResultGroupPublisher" method="getTestResultParsers" var="parsers" />
-    <j:invokeStatic className="hudson.plugins.labeledgroupedtests.LabeledTestResultGroupPublisher" method="getPhases" var="phases"/>
-
-    <f:entry>
-        <f:repeatable name="configs" var="curConfig" items="${instance.configs}"
-                      add="Add Test Report Group" minimum="1">
-            <table width="100%">
-                <f:entry title="">
-                    <f:entry title="Report File Mask">
-                        <f:textbox name="testResultFileMask" value="${curConfig.testResultFileMask}" ></f:textbox>
-                        <f:entry title="Result Format" name="format">
-                            <select name="parserClassName">
-                                <j:forEach var="parser" items="${parsers}">
-                                    <f:option value="${parser.class.name}" selected="${parser.class.name==curConfig.parserClassName}">${parser.displayName}</f:option>
-                                </j:forEach>
-                            </select>
-                        </f:entry>
-
-                        <f:entry title="Group Label">
-                            <select name="label">
-                                <j:forEach var="phase" items="${phases}">
-                                    <f:option value="${phase}"  selected="${phase==curConfig.label}">${phase}</f:option>
-                                </j:forEach>
-                            </select>
-                        </f:entry>
-
-                    </f:entry>
-                </f:entry>
-                <f:entry title="">
-                    <div align="right">
-                        <f:repeatableDeleteButton value="Delete Test Result Group"/>
-                    </div>
-                </f:entry>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+    <f:entry field="configs">
+        <f:repeatable field="configs" add="Add Test Report Group" >
+            <table style="width:100%">
+              <st:include page="config.jelly" class="${descriptor.clazz}" />
             </table>
         </f:repeatable>
     </f:entry>
