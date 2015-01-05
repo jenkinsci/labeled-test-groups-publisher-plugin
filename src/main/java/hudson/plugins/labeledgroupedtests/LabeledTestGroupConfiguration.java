@@ -24,21 +24,30 @@
 package hudson.plugins.labeledgroupedtests;
 
 
+import hudson.Extension;
 import hudson.Util;
+import hudson.model.Descriptor;
+import hudson.model.Hudson;
 import hudson.tasks.junit.JUnitParser;
+import hudson.util.FormValidation;
+import hudson.model.Describable;
+import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
+import org.kohsuke.stapler.QueryParameter;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * Keeps track of the association between a test result location file mask,
  * the parser to invoke, and the label (aka phase) to apply to those results.
  */
-public class LabeledTestGroupConfiguration {
+public class LabeledTestGroupConfiguration implements Describable<LabeledTestGroupConfiguration>, Comparable<LabeledTestGroupConfiguration> {
     private String parserClassName;
     private String testResultFileMask;
     private String label;
+    private static final Pattern VALID_LABEL = Pattern.compile("^[a-zA-Z0-9 ]+$");
 
     @DataBoundConstructor
     public LabeledTestGroupConfiguration(String parserClassName, String testResultFileMask, String label) {
@@ -86,6 +95,30 @@ public class LabeledTestGroupConfiguration {
         return Util.rawEncode(niceName);
     }
 
+    public Descriptor<LabeledTestGroupConfiguration> getDescriptor() {
+        // Copied from AbstractDescribableImpl.java, which isn't available in the current version.
+        return Hudson.getInstance().getDescriptorOrDie(getClass());
+    }
+
+    @Extension
+    public static class DescriptorImpl extends Descriptor<LabeledTestGroupConfiguration> {
+
+        @Override
+        public String getDisplayName() {
+            return StringUtils.EMPTY;
+        }
+
+        public FormValidation doCheckLabel(@QueryParameter String value){
+            if(VALID_LABEL.matcher(value).matches()){
+                return FormValidation.ok();
+            }
+            else{
+                return FormValidation.error("Label must be a non-empty, alphanumeric string.");
+            }
+        }
+
+    }
+
     static Map<String, String> DISPLAY_NAME_MAP = new HashMap<String, String>(5);
 
 
@@ -99,4 +132,7 @@ public class LabeledTestGroupConfiguration {
         DISPLAY_NAME_MAP.put("hudson.plugins.cppunitparser.CPPUnitTestResultParser", "cppunit");
     }
 
+    public int compareTo(LabeledTestGroupConfiguration that) {
+        return this.getLabel().compareTo(that.getLabel());
+    }
 }
