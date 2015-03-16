@@ -34,7 +34,7 @@ THE SOFTWARE.
     </parent>
 
     <artifactId>labeled-test-groups-publisher</artifactId>
-    <version>1.2.7-SNAPSHOT</version>
+    <version>1.2.7</version>
     <packaging>hpi</packaging>
     <name>Labeled Test Groups Publisher</name>
     <description>Hudson plugin that allows arbitrary test formats grouped by type</description>
@@ -82,7 +82,8 @@ THE SOFTWARE.
         <connection>scm:git:ssh://github.com/jenkinsci/labeled-test-groups-publisher-plugin.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/jenkinsci/labeled-test-groups-publisher-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/labeled-test-groups-publisher-plugin</url>
-    </scm>
+      <tag>labeled-test-groups-publisher-1.2.7</tag>
+  </scm>
 
   <distributionManagement>
     <repository>
