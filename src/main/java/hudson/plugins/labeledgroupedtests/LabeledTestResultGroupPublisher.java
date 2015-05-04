@@ -64,7 +64,7 @@ public class LabeledTestResultGroupPublisher extends Recorder implements Seriali
      * Declares the scope of the synchronization monitor this {@link hudson.tasks.BuildStep} expects from outside.
      */
     public BuildStepMonitor getRequiredMonitorService() {
-        return BuildStepMonitor.BUILD;
+        return BuildStepMonitor.NONE;
     }
 
     public MatrixAggregator createAggregator(MatrixBuild build, Launcher launcher, BuildListener listener) {
