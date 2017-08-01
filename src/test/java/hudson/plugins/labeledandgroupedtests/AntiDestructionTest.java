@@ -26,7 +26,7 @@ package hudson.plugins.labeledandgroupedtests;
 import com.thoughtworks.xstream.XStream;
 import hudson.model.Items;
 import hudson.tasks.junit.JUnitResultArchiver;
-import hudson.util.DescribableList;
+import hudson.tasks.junit.TestDataPublisher;
 import org.jvnet.hudson.test.HudsonTestCase;
 
 import java.util.List;
@@ -62,7 +62,7 @@ public class AntiDestructionTest extends HudsonTestCase {
 
 
         boolean emptyTDPs = false;
-        DescribableList testDataPublishers = reloadedArchiver.getTestDataPublishers();
+        List<? extends TestDataPublisher> testDataPublishers = reloadedArchiver.getTestDataPublishers();
         try {
             if (testDataPublishers==null) {
                 emptyTDPs = true;

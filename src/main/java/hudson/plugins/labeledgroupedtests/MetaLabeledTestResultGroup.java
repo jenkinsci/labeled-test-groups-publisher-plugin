@@ -212,7 +212,7 @@ public class MetaLabeledTestResultGroup extends MetaTabulatedResult {
     public MetaLabeledTestResultGroup getPreviousResult() {
         // TODO: consider caching
         if (parentAction == null) return null;
-        AbstractBuild<?,?> b = parentAction.owner;
+        Run<?, ?> b = parentAction.run;
         while(true) {
             b = b.getPreviousBuild();
             if(b==null)
@@ -365,9 +365,10 @@ public class MetaLabeledTestResultGroup extends MetaTabulatedResult {
         return (totalCount != 0);
     }
 
-    public AbstractBuild<?, ?> getOwner() {
+    @Override
+    public Run<?, ?> getRun() {
         if (parentAction != null)
-            return parentAction.owner;
+            return parentAction.run;
         else
             return null;
     }

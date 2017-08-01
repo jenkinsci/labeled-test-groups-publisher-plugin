@@ -91,7 +91,7 @@ public class ConfigurationConversionTest extends TestCase {
         try {
             LabeledTestResultGroupPublisher publisher = (LabeledTestResultGroupPublisher) xmlFile.read();
             fail("exception not encountered!");
-        } catch (IOException2 e) {
+        } catch (IOException e) {
             if (!ConversionException.class.equals(e.getCause().getClass())) {
                 fail("wrong cause"); 
             }

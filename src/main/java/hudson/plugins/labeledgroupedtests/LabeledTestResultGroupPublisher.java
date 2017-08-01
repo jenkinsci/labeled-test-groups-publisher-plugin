@@ -25,6 +25,7 @@ package hudson.plugins.labeledgroupedtests;
 
 
 import hudson.Extension;
+import hudson.FilePath;
 import hudson.Launcher;
 import hudson.matrix.MatrixAggregatable;
 import hudson.matrix.MatrixAggregator;
@@ -37,6 +38,7 @@ import hudson.tasks.Recorder;
 import hudson.tasks.test.TestResult;
 import hudson.tasks.test.TestResultParser;
 import hudson.tasks.test.TestResultAggregator;
+import jenkins.tasks.SimpleBuildStep;
 import net.sf.json.JSONObject;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
@@ -46,7 +48,9 @@ import java.io.Serializable;
 import java.util.*;
 import java.util.logging.Logger;
 
-public class LabeledTestResultGroupPublisher extends Recorder implements Serializable, MatrixAggregatable {
+import javax.annotation.Nonnull;
+
+public class LabeledTestResultGroupPublisher extends Recorder implements Serializable, MatrixAggregatable, SimpleBuildStep {
     private static final Logger LOGGER = Logger.getLogger(LabeledTestResultGroupPublisher.class.getName());
     protected List<LabeledTestGroupConfiguration> configs;
     private static List<TestResultParser> testResultParsers = null;
@@ -105,8 +109,7 @@ public class LabeledTestResultGroupPublisher extends Recorder implements Seriali
     }
 
     @Override
-    public boolean perform(final AbstractBuild build, Launcher launcher, final BuildListener listener)
-            throws InterruptedException, IOException {
+    public void perform(@Nonnull Run<?, ?> build, @Nonnull FilePath workspace, @Nonnull Launcher launcher, @Nonnull TaskListener listener) throws InterruptedException, IOException {
         String startMsg = "Analyzing test results with LabeledTestResultGroupPublisher...";
         listener.getLogger().println(startMsg);
         LOGGER.fine(startMsg);
@@ -149,7 +152,7 @@ public class LabeledTestResultGroupPublisher extends Recorder implements Seriali
                 // how to go from the Class object to calling a static method without an instance involved.
                 if (parserObject instanceof TestResultParser) {
                     TestResultParser parser = (TestResultParser) parserObject;
-                    someResult = parser.parse(config.getTestResultFileMask(), build, launcher, listener);
+                    someResult = parser.parseResult(config.getTestResultFileMask(), build, workspace, launcher, listener);
                 } else {
                     LOGGER.warning("Couldn't find a parser for class: " + parserClassName);
                     listener.getLogger().println("Couldn't find a parser for class: " + parserClassName);
@@ -209,8 +212,6 @@ public class LabeledTestResultGroupPublisher extends Recorder implements Seriali
         LOGGER.info("Test results parsed: " + debugString);
         listener.getLogger().println("Test results parsed: " + debugString); 
 
-
-        return true;
     }
 
     /**
@@ -258,7 +259,7 @@ public class LabeledTestResultGroupPublisher extends Recorder implements Seriali
     }
 
 
-    private Result determineBuildHealth(AbstractBuild build,  MetaLabeledTestResultGroup resultGroup) {
+    private Result determineBuildHealth(Run<?, ?> build, MetaLabeledTestResultGroup resultGroup) {
         // Set build health on the basis of all configured test report groups
         Result worstSoFar = build.getResult();
 
