@@ -124,7 +124,7 @@ public class CountingTest extends EnhancedHudsonTestCase {
             }
             HudsonTestCase.WebClient wc = new HudsonTestCase.WebClient();
 
-            // First check that for the ones we just ran, it always says (1 failure / ±0) on the build summary page
+            // First check that for the ones we just ran, it always says (1 failure / Â±0) on the build summary page
 
             HtmlPage projectPage = wc.goTo(project.getUrl());
             String pageAsText = projectPage.asXml();
@@ -136,7 +136,7 @@ public class CountingTest extends EnhancedHudsonTestCase {
             // Ugh. The +/- character behaves differently on the mac than on unix.
             // This test passes on the mac, fails on unix, so, sadly, I'm going to
             // do some obnoxious workaround.
-            String plusOrMinusSymbol = " ±";
+            String plusOrMinusSymbol = " Â±";
 
 
             String xPathToMainPanel = "//td[@id='main-panel']";

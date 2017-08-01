@@ -24,20 +24,14 @@
 package hudson.plugins.labeledgroupedtests;
 
 import com.thoughtworks.xstream.XStream;
-import hudson.Functions;
 import hudson.XmlFile;
-import hudson.model.AbstractBuild;
-import hudson.model.BuildListener;
-import hudson.tasks.junit.CaseResult;
-import hudson.tasks.junit.SuiteResult;
-import hudson.tasks.junit.TestResult;
+import hudson.model.Run;
+import hudson.model.TaskListener;
 import hudson.tasks.test.AbstractTestResultAction;
 import hudson.tasks.test.TestObject;
-import hudson.util.HeapSpaceStringConverter;
 import hudson.util.XStream2;
 import org.kohsuke.stapler.StaplerProxy;
 
-import javax.rmi.CORBA.Util;
 import java.io.File;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -70,8 +64,9 @@ public class MetaLabeledTestResultGroupAction extends AbstractTestResultAction<M
      */
     private transient WeakReference<MetaLabeledTestResultGroup> resultGroupReference;
 
-    public MetaLabeledTestResultGroupAction(AbstractBuild owner, MetaLabeledTestResultGroup r, BuildListener listener) {
-        super(owner);        
+    public MetaLabeledTestResultGroupAction(Run<?, ?> owner, MetaLabeledTestResultGroup r, TaskListener listener) {
+        super();
+        this.onAttached(owner);
         setResult(r, listener);
     }
 
@@ -79,7 +74,7 @@ public class MetaLabeledTestResultGroupAction extends AbstractTestResultAction<M
     /**
      * Store the data to a separate file, and update our cached values.
      */
-    public synchronized void setResult(MetaLabeledTestResultGroup r, BuildListener listener) {
+    public synchronized void setResult(MetaLabeledTestResultGroup r, TaskListener listener) {
 
         r.setParentAction(this);
 
@@ -98,7 +93,7 @@ public class MetaLabeledTestResultGroupAction extends AbstractTestResultAction<M
     }
 
     private XmlFile getDataFile() {
-        return new XmlFile(XSTREAM, new File(owner.getRootDir(), RESULT_DATA_FILENAME));
+        return new XmlFile(XSTREAM, new File(run.getRootDir(), RESULT_DATA_FILENAME));
     }
 
     public Object getTarget() {

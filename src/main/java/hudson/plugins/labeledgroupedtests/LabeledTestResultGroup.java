@@ -234,9 +234,9 @@ public class LabeledTestResultGroup extends MetaTabulatedResult {
     }
     
     @Override
-    public AbstractBuild<?, ?> getOwner() {
+    public Run<?, ?> getRun() {
         if (parent == null) return null;
-        return parent.getOwner();
+        return parent.getRun();
     }
 
     @Override
@@ -286,13 +286,13 @@ public class LabeledTestResultGroup extends MetaTabulatedResult {
             LOGGER.warning("Can't getPreviousResult; parent was null."); 
             return null;
         }
-        AbstractBuild<?,?> b = parent.getOwner();
+        Run<?,?> b = parent.getRun();
         if (b==null) {
-            LOGGER.warning("Can't getPreviousResult; parent.getOwner() was null");
+            LOGGER.warning("Can't getPreviousResult; parent.getRun() was null");
             return null;
         }
         while(true) {
-            AbstractBuild<?,?> n = b;
+            Run<?,?> n = b;
             b = b.getPreviousBuild();
             if(b==null) {
                 if (n.getNumber()!=1) { 

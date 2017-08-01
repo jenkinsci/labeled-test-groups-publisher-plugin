@@ -27,10 +27,9 @@ THE SOFTWARE.
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.jvnet.hudson.plugins</groupId>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>1.343</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>1.577</version>
     </parent>
 
     <artifactId>labeled-test-groups-publisher</artifactId>
@@ -62,10 +61,14 @@ THE SOFTWARE.
 
     <dependencies>
         <dependency>
-            <groupId>org.jvnet.hudson.main</groupId>
-            <artifactId>hudson-core</artifactId>
-            <version>${hudson.version}</version>
-            <scope>provided</scope>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>junit</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>matrix-project</artifactId>
+            <version>1.0</version>
         </dependency>
     </dependencies>
 
@@ -88,7 +91,7 @@ THE SOFTWARE.
   <distributionManagement>
     <repository>
       <id>maven.jenkins-ci.org</id>
-      <url>http://maven.jenkins-ci.org:8081/content/repositories/releases/</url>
+      <url>https://repo.jenkins-ci.org/releases/</url>
     </repository>
   </distributionManagement>
 

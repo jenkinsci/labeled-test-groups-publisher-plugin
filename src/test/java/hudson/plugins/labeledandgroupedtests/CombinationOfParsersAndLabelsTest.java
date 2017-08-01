@@ -29,8 +29,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlTable;
 import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
 import com.gargoylesoftware.htmlunit.Page;
-import hudson.tasks.test.*;
-import hudson.tasks.junit.*;
+
 import hudson.tasks.junit.PackageResult;
 import hudson.model.*;
 import hudson.plugins.labeledgroupedtests.MetaLabeledTestResultGroupAction;
@@ -38,6 +37,8 @@ import hudson.plugins.labeledgroupedtests.MetaLabeledTestResultGroup;
 import hudson.plugins.labeledgroupedtests.LabeledTestResultGroup;
 import hudson.slaves.DumbSlave;
 import hudson.tasks.test.TestResult;
+import jenkins.model.Jenkins;
+
 import org.jvnet.hudson.test.HudsonTestCase;
 import org.jvnet.hudson.test.recipes.LocalData;
 
@@ -46,8 +47,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
 
 /**
  * Exercise a project with a known configuration using multiple test
@@ -135,7 +134,7 @@ public class CombinationOfParsersAndLabelsTest extends EnhancedHudsonTestCase {
         // Look for a MetaLabeledTestResultGroup at the top level
         MetaLabeledTestResultGroup result = action.getResultAsTestResultGroup();
         assertNotNull("we should have a non-null result group", result);
-        AbstractBuild<?,?> owner = result.getOwner();
+        Run<?,?> owner = result.getRun();
         assertNotNull("the result should have a non-null owner", owner);
 
         
@@ -369,7 +368,7 @@ public class CombinationOfParsersAndLabelsTest extends EnhancedHudsonTestCase {
      */
      private void reloadHudson() throws NoSuchMethodException,
              IllegalAccessException, InvocationTargetException {
-         Method m = Hudson.class.getDeclaredMethod("loadTasks");
+         Method m = Jenkins.class.getDeclaredMethod("loadTasks");
          m.setAccessible(true);
          m.invoke(hudson);
      }
