@@ -25,9 +25,9 @@ package hudson.plugins.labeledandgroupedtests;
 
 import org.jvnet.hudson.test.HudsonTestCase;
 
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.html.DomNode;
-import com.gargoylesoftware.htmlunit.xml.XmlPage;
+import org.htmlunit.html.HtmlPage;
+import org.htmlunit.html.DomNode;
+import org.htmlunit.xml.XmlPage;
 import hudson.model.*;
 import org.jvnet.hudson.test.recipes.LocalData;
 

@@ -37,9 +37,9 @@ import hudson.tasks.test.TabulatedResult;
 import java.util.List;
 import java.io.IOException;
 
-import com.gargoylesoftware.htmlunit.Page;
-import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
-import com.gargoylesoftware.htmlunit.xml.XmlPage;
+import org.htmlunit.Page;
+import org.htmlunit.FailingHttpStatusCodeException;
+import org.htmlunit.xml.XmlPage;
 
 /**
  * User: Benjamin Shine bshine
