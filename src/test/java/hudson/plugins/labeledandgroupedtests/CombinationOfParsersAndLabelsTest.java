@@ -24,11 +24,11 @@
 package hudson.plugins.labeledandgroupedtests;
 
 
-import com.gargoylesoftware.htmlunit.html.HtmlElement;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.html.HtmlTable;
-import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
-import com.gargoylesoftware.htmlunit.Page;
+import org.htmlunit.html.HtmlElement;
+import org.htmlunit.html.HtmlPage;
+import org.htmlunit.html.HtmlTable;
+import org.htmlunit.html.HtmlAnchor;
+import org.htmlunit.Page;
 
 import hudson.tasks.junit.PackageResult;
 import hudson.model.*;
